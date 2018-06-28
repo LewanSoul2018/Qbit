@@ -1,0 +1,21 @@
+{
+    "name": "qbit",
+    "version": "0.0.1",
+    "description": "Blocks for LewanSoul Qbit",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "QbitRGBLight.ts",
+        "sendbuffer.asm",
+        "_locales/zh/qbit-strings.json",
+        "_locales/zh/qbit-jsdoc-strings.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true
+}
