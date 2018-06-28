@@ -103,8 +103,8 @@ namespace qbit {
 	/**
    * Qbit initialization, please execute at boot time
   */
-    //% weight=100 blockId=qbit block="Initialize Qbit"
-    export function qbit() {
+    //% weight=100 blockId=qbitInit block="Initialize Qbit"
+    export function qbitInit() {
         initRGBLight();
         initColorSensor();
         serial.redirect(
