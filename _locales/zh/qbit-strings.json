@@ -52,6 +52,7 @@
 	"qbit.CmdType.LIGHT|block":"光线查询命令",
 	"qbit.CmdType.BATTERY|block":"电量查询命令",
 	"qbit.CmdType.RGB_LIGHT|block":"彩灯控制命令",
+	"qbit.CmdType.BAT|block":"电量命令",
 	"qbit.CmdType.DIDI|block":"鸣笛命令",
 	"qbit.CmdType.VERSION|block":"读取固件信息命令",
 	"qbit.CarRunCmdType.STOP|block":"停止",

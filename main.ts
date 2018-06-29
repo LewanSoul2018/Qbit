@@ -66,6 +66,8 @@ namespace qbit {
         SOUND = 5,
         //% block="Light"
         LIGHT = 6,
+        //% block="Voltage"
+        BAT = 7,
         //% block="Rgb light"
         RGB_LIGHT = 8,
         //% block="Honk horn"
