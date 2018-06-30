@@ -105,7 +105,6 @@ namespace qbit {
             BaudRate.BaudRate115200);
          
         basic.forever(() => {
-            control.waitMicros(200);
             getHandleCmd();
         });
     
@@ -123,24 +122,25 @@ namespace qbit {
     * Send the obstacle command.
     */
     function sendObstacleCmd() {
-        let buf = pins.createBuffer(4);
-        buf[0] = 0x55;
-        buf[1] = 0x55;
-        buf[2] = 0x02;
-        buf[3] = 0x34;//cmd type
-        serial.writeBuffer(buf);
+            let buf = pins.createBuffer(4);
+            buf[0] = 0x55;
+            buf[1] = 0x55;
+            buf[2] = 0x02;
+            buf[3] = 0x34;//cmd type
+            serial.writeBuffer(buf);
+
     }
 	
     /**
     * Send the battery command.
     */
     function sendBatCmd() {
-        let buf = pins.createBuffer(4);
-        buf[0] = 0x55;
-        buf[1] = 0x55;
-        buf[2] = 0x02;
-        buf[3] = 0x0f;//cmd type
-        serial.writeBuffer(buf);
+            let buf = pins.createBuffer(4);
+            buf[0] = 0x55;
+            buf[1] = 0x55;
+            buf[2] = 0x02;
+            buf[3] = 0x0f;//cmd type
+            serial.writeBuffer(buf);
     }
 
     let handleCmd: string = "";
@@ -861,7 +861,7 @@ namespace qbit {
      */
     //% weight=74  blockId=getArgs block="Get bluetooth command|%str|argument at %index"
     //% index.min=1 index.max=3
-    export function getArgs(str: string,index: number): number {
+    export function getArgs(str: string, index: number): number {
         let cmdType = analyzeBluetoothCmd(str);
         if (cmdType == CmdType.NO_COMMAND)
         {
