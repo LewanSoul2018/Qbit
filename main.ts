@@ -92,6 +92,7 @@ namespace qbit {
     let obstacleSensor1: boolean = false;
     let obstacleSensor2: boolean = false;
     let currentVoltage: number = 0;
+    let serialStop: boolean = false;
 	/**
    * Qbit initialization, please execute at boot time
   */
@@ -109,7 +110,7 @@ namespace qbit {
         });
     
         basic.forever(() => {
-            control.waitMicros(300);
+            control.waitMicros(200);
             sendObstacleCmd();
         });
 	basic.forever(() => {
@@ -122,25 +123,31 @@ namespace qbit {
     * Send the obstacle command.
     */
     function sendObstacleCmd() {
+        if (!serialStop)
+        {
             let buf = pins.createBuffer(4);
             buf[0] = 0x55;
             buf[1] = 0x55;
             buf[2] = 0x02;
             buf[3] = 0x34;//cmd type
             serial.writeBuffer(buf);
-
+        }
     }
 	
     /**
     * Send the battery command.
     */
     function sendBatCmd() {
+        if (!serialStop)
+        {
             let buf = pins.createBuffer(4);
             buf[0] = 0x55;
             buf[1] = 0x55;
             buf[2] = 0x02;
             buf[3] = 0x0f;//cmd type
             serial.writeBuffer(buf);
+        }
+
     }
 
     let handleCmd: string = "";
@@ -792,7 +799,7 @@ namespace qbit {
     /**
 	 * Extension  1 pin read analog
 	 */
-    //% weight=78 blockGap=50 blockId=readExt1Analog block="Read extension 1 pin analog"
+    //% weight=79 blockGap=50 blockId=readExt1Analog block="Read extension 1 pin analog"
     export function readExt1Analog():number
     {
         return pins.analogReadPin(AnalogPin.P2);
@@ -801,10 +808,20 @@ namespace qbit {
     /**
 	 * Get Qbit current voltage,the unit is mV
 	 */
-    //% weight=77 blockId=getBatVoltage block="Get Qbit current voltage (mV)"
+    //% weight=78 blockId=getBatVoltage block="Get Qbit current voltage (mV)"
     export function getBatVoltage(): number {
         return currentVoltage;
     }
+
+    /**
+	 *Start handling the bluetooth command
+	 */
+    //% weight=77 blockId=handleBluetoothCmd block="Handle the bluetooth command start"
+    export function handleBluetoothCmd() {
+        serialStop = true;
+    }
+
+    
 
      /**
      * Resolve the Bluetooth that phone APP send command type, the total of nine types of commands: tank display command, servo debug command, obtaining the distance of ultrasonic command, obtaining temperature command, obtain sound size rank orders, to obtain the light level command, set the color lights command, honking command, firmware version information command.
@@ -960,4 +977,13 @@ namespace qbit {
         cmdStr += "|$";
         return cmdStr;
     }
+
+    /**
+	 * Stop handling the bluetooth command
+	 */
+    //% weight=60 blockId=handleBluetoothCmdEnd block="Handle the bluetooth command end"
+    export function handleBluetoothCmdEnd() {
+        serialStop = false;
+    }
+
 }
