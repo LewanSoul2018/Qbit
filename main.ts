@@ -109,10 +109,10 @@ namespace qbit {
             getHandleCmd();
         });
     
-        basic.forever(() => {
-            control.waitMicros(200);
-            sendObstacleCmd();
-        });
+        // basic.forever(() => {
+        //     control.waitMicros(200);
+        //     sendObstacleCmd();
+        // });
 	basic.forever(() => {
             control.waitMicros(5000);
             sendBatCmd();
