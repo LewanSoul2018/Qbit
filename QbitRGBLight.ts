@@ -23,6 +23,15 @@ enum QbitRGBColors {
     White = 9
 }
 
+enum QbitThreeRGBColors {
+    //% block=red
+    Red = 1,
+    //% block=green
+    Green = 4,
+    //% block=blue
+    Blue = 5
+}
+
 /**
  * Different modes for RGB or RGB+W RGBLight QbitRGBColors
  */
@@ -71,6 +80,10 @@ namespace QbitRGBLight {
             this.setPixelRGB(pixeloffset, rgb);
         }
 
+        setThreePixelColor(pixeloffset: number, rgb: QbitThreeRGBColors): void {
+            this.setPixelThreeRGB(pixeloffset,rgb);
+        }
+
         private setPixelRGB(pixeloffset: number, rgb: QbitRGBColors): void {
             if (pixeloffset < 0
                 || pixeloffset >= this._length)
@@ -113,6 +126,42 @@ namespace QbitRGBLight {
                 case QbitRGBColors.White:
                     tureRgb = 0xFFFFFF;    
                     break;   
+            }
+
+            let stride = this._mode === QbitRGBPixelMode.RGBW ? 4 : 3;
+            pixeloffset = (pixeloffset + this.start) * stride;
+
+            let red = unpackR(tureRgb);
+            let green = unpackG(tureRgb);
+            let blue = unpackB(tureRgb);
+
+            let br = this.brightness;
+            if (br < 255) {
+                red = (red * br) >> 8;
+                green = (green * br) >> 8;
+                blue = (blue * br) >> 8;
+            }
+            this.setBufferRGB(pixeloffset, red, green, blue)
+        }
+
+        private setPixelThreeRGB(pixeloffset: number, rgb: QbitThreeRGBColors): void {
+            if (pixeloffset < 0
+                || pixeloffset >= this._length)
+                return;
+            let tureRgb = 0;
+            switch (rgb)
+            {
+                case QbitThreeRGBColors.Red:
+                    tureRgb = 0xFF0000;
+                    break;    
+                    
+                case QbitThreeRGBColors.Green:
+                    tureRgb = 0x00FF00;    
+                    break;    
+
+                case QbitThreeRGBColors.Blue:
+                    tureRgb = 0x0000FF;
+                    break;    
             }
 
             let stride = this._mode === QbitRGBPixelMode.RGBW ? 4 : 3;

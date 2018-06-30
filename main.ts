@@ -31,12 +31,16 @@ namespace qbit {
         //% block="Light 1"
         Light1 = 0x00,
         //% block="Light 2"
-        Light2 = 0x01,
-        //% block="Light 3"
-        Light3 = 0x02,
-        //% block="Light 4"
-        Light4 = 0x03
+        Light2 = 0x01
     }
+
+    export enum ThreeColorLights {
+        //% block="Three color light 1"
+        Light1 = 0x02,
+        //% block="Three color light 2"
+        Light2 = 0x03
+    }
+
     export enum Exts {
         //% block="Ext 1"
         Ext1 = 0x00,
@@ -395,29 +399,7 @@ namespace qbit {
      */
     //% weight=91 blockId=setPixelRGB block="Set|%lightoffset|color to %rgb"
     export function setPixelRGB(lightoffset: Lights, rgb: QbitRGBColors)
-    {
-        if (lightoffset == Lights.Light3)
-        {
-            if (rgb == QbitRGBColors.Red)
-            {
-                rgb = QbitRGBColors.Green;
-            }
-            else if (rgb == QbitRGBColors.Green)
-            {
-                rgb = QbitRGBColors.Red;
-            }    
-        }    
-        else if (lightoffset == Lights.Light4)
-        {
-            if (rgb == QbitRGBColors.Red)
-            {
-                rgb = QbitRGBColors.Green;
-            }
-            else if (rgb == QbitRGBColors.Green)
-            {
-                rgb = QbitRGBColors.Red;
-            }  
-        }    
+    { 
         lhRGBLight.setPixelColor(lightoffset, rgb);
      }
     
@@ -429,6 +411,26 @@ namespace qbit {
     export function setPixelRGBArgs(lightoffset: Lights, rgb: number)
     {
         lhRGBLight.setPixelColor(lightoffset, rgb);
+    }
+
+    /**
+     * Set three Color light argument
+     */
+    //% weight=89 blockId=setThreeRGBArgs block="Set|%lightoffset|color to %rgb"
+    export function setThreeRGBArgs(lightoffset: ThreeColorLights, rgb: QbitThreeRGBColors)
+    {
+        if (lightoffset == ThreeColorLights.Light1 || lightoffset == ThreeColorLights.Light2)
+        {
+            if (rgb == QbitThreeRGBColors.Red)
+            {
+                rgb = QbitThreeRGBColors.Green;
+            }
+            else if (rgb == QbitThreeRGBColors.Green)
+            {
+                rgb = QbitThreeRGBColors.Red;
+            }    
+        }    
+        lhRGBLight.setThreePixelColor(lightoffset, rgb);
     }
 
     /**
