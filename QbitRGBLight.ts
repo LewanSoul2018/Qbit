@@ -23,7 +23,7 @@ enum QbitRGBColors {
     White = 9
 }
 
-export enum Lights {
+ enum Lights {
     //% block="Light 1"
     Light1 = 0x00,
     //% block="Light 2"
