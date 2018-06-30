@@ -3,8 +3,10 @@
 	"qbit.setMotorSpeed|block": "设置电机1速度|%speed1|和电机2|速度 %speed2",
 	"qbit.Ultrasonic|block": "超声波检测到障碍物距离(厘米)",
 	"qbit.getSoundVolume|block": "音量大小",
-	"qbit.Lights.Light1|block":"彩灯1",
-	"qbit.Lights.Light2|block":"彩灯2",
+	"Lights.Light1|block":"彩灯1",
+	"Lights.Light2|block":"彩灯2",
+	"Lights.Light3|block":"彩灯3",
+	"Lights.Light4|block":"彩灯4",
 	"qbit.setPixelRGB|block":"设置|%lightoffset|颜色为 %rgb",
 	"qbit.setPixelRGBArgs|block":"设置|%lightoffset|颜色为 %rgb",
 	"qbit.showLight|block":"显示彩灯",
@@ -67,11 +69,5 @@
 	"qbit.convertSound|block":"转换声音命令 %data",
 	"qbit.convertLight|block":"转换光线命令 %data",
 	"qbit.convertBattery|block":"转换电量命令 %data",
-	"qbit.getBatVoltage|block":"获取qbit当前电压值(mV)",
-	"qbit.ThreeColorLights.Light1|block":"三色灯1",
-	"qbit.ThreeColorLights.Light2|block":"三色灯2",
-	"QbitThreeRGBColors.Red|block":"红色",
-	"QbitThreeRGBColors.Green|block":"绿色",
-	"QbitThreeRGBColors.Blue|block":"蓝色",
-	"qbit.setThreeRGBArgs|block":"设置|%lightoffset|颜色 %rgb"
+	"qbit.getBatVoltage|block":"获取qbit当前电压值(mV)"
 }

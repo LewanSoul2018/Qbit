@@ -23,6 +23,5 @@
 	"qbit.convertUltrasonic":"转换超声波障碍物距离为标准命令，发送到手机端，APP会显示超声波障碍物距离",
 	"qbit.convertTemperature":"转换温度值为标准命令，发送到手机端，APP会显示当前温度",
 	"qbit.convertLight":"转换光线值为标准命令，发送到手机端，APP会显示当前光线等级(0~255)",
-	"qbit.convertBattery":"转换电压值，发送到手机端，APP会显示当前电压",
-	"qbit.setThreeRGBArgs":"设置三色灯颜色，三种颜色为红、绿、蓝"
+	"qbit.convertBattery":"转换电压值，发送到手机端，APP会显示当前电压"
 }

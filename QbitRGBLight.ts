@@ -23,13 +23,15 @@ enum QbitRGBColors {
     White = 9
 }
 
-enum QbitThreeRGBColors {
-    //% block=red
-    Red = 1,
-    //% block=green
-    Green = 4,
-    //% block=blue
-    Blue = 5
+export enum Lights {
+    //% block="Light 1"
+    Light1 = 0x00,
+    //% block="Light 2"
+    Light2 = 0x01,
+    //% block="Light 3"
+    Light3 = 0x02,
+    //% block="Light 4"
+    Light4 = 0x03
 }
 
 /**
@@ -55,7 +57,7 @@ namespace QbitRGBLight {
     }
 
     /**
-    * A QbitRGBLight class
+    * A LHQbitRGBLight class
     */
     export class LHQbitRGBLight {
         buf: Buffer;
@@ -80,88 +82,94 @@ namespace QbitRGBLight {
             this.setPixelRGB(pixeloffset, rgb);
         }
 
-        setThreePixelColor(pixeloffset: number, rgb: QbitThreeRGBColors): void {
-            this.setPixelThreeRGB(pixeloffset,rgb);
-        }
-
         private setPixelRGB(pixeloffset: number, rgb: QbitRGBColors): void {
             if (pixeloffset < 0
                 || pixeloffset >= this._length)
                 return;
             let tureRgb = 0;
-            switch (rgb)
+        
+            if (pixeloffset == 2 || pixeloffset == 3)
             {
-                case QbitRGBColors.Red:
-                    tureRgb = 0xFF0000;
-                    break;    
-
-                case QbitRGBColors.Orange:
-                    tureRgb = 0xFFA500;    
-                    break;    
-
-                case QbitRGBColors.Yellow:
-                    tureRgb = 0xFFFF00;
-                    break;    
-                    
-                case QbitRGBColors.Green:
-                    tureRgb = 0x00FF00;    
-                    break;    
-
-                case QbitRGBColors.Blue:
-                    tureRgb = 0x0000FF;
-                    break;    
-                    
-                case QbitRGBColors.Indigo:
-                    tureRgb = 0x4b0082;    
-                    break;    
-
-                case QbitRGBColors.Violet:
-                    tureRgb = 0x8a2be2;
-                    break;    
-                    
-                case QbitRGBColors.Purple:
-                    tureRgb = 0xFF00FF;    
-                    break;   
-
-                case QbitRGBColors.White:
-                    tureRgb = 0xFFFFFF;    
-                    break;   
+                switch (rgb)
+                {
+                    case QbitRGBColors.Red:
+                        tureRgb = 0x00FF00;
+                        break;    
+    
+                    case QbitRGBColors.Orange:
+                        tureRgb = 0xA5FF00;    
+                        break;    
+    
+                    case QbitRGBColors.Yellow:
+                        tureRgb = 0xFFFF00;
+                        break;    
+                        
+                    case QbitRGBColors.Green:
+                        tureRgb = 0xFF0000;    
+                        break;    
+    
+                    case QbitRGBColors.Blue:
+                        tureRgb = 0x0000FF;
+                        break;    
+                        
+                    case QbitRGBColors.Indigo:
+                        tureRgb = 0x004b82;    
+                        break;    
+    
+                    case QbitRGBColors.Violet:
+                        tureRgb = 0x2B8AE2;
+                        break;    
+                        
+                    case QbitRGBColors.Purple:
+                        tureRgb = 0x00FFFF;    
+                        break;   
+    
+                    case QbitRGBColors.White:
+                        tureRgb = 0xFFFFFF;    
+                        break;   
+                }
             }
-
-            let stride = this._mode === QbitRGBPixelMode.RGBW ? 4 : 3;
-            pixeloffset = (pixeloffset + this.start) * stride;
-
-            let red = unpackR(tureRgb);
-            let green = unpackG(tureRgb);
-            let blue = unpackB(tureRgb);
-
-            let br = this.brightness;
-            if (br < 255) {
-                red = (red * br) >> 8;
-                green = (green * br) >> 8;
-                blue = (blue * br) >> 8;
-            }
-            this.setBufferRGB(pixeloffset, red, green, blue)
-        }
-
-        private setPixelThreeRGB(pixeloffset: number, rgb: QbitThreeRGBColors): void {
-            if (pixeloffset < 0
-                || pixeloffset >= this._length)
-                return;
-            let tureRgb = 0;
-            switch (rgb)
+            else
             {
-                case QbitThreeRGBColors.Red:
-                    tureRgb = 0xFF0000;
-                    break;    
-                    
-                case QbitThreeRGBColors.Green:
-                    tureRgb = 0x00FF00;    
-                    break;    
-
-                case QbitThreeRGBColors.Blue:
-                    tureRgb = 0x0000FF;
-                    break;    
+                switch (rgb)
+                {
+                    case QbitRGBColors.Red:
+                        tureRgb = 0xFF0000;
+                        break;    
+    
+                    case QbitRGBColors.Orange:
+                        tureRgb = 0xFFA500;    
+                        break;    
+    
+                    case QbitRGBColors.Yellow:
+                        tureRgb = 0xFFFF00;
+                        break;    
+                        
+                    case QbitRGBColors.Green:
+                        tureRgb = 0x00FF00;    
+                        break;    
+    
+                    case QbitRGBColors.Blue:
+                        tureRgb = 0x0000FF;
+                        break;    
+                        
+                    case QbitRGBColors.Indigo:
+                        tureRgb = 0x4b0082;    
+                        break;    
+    
+                    case QbitRGBColors.Violet:
+                        tureRgb = 0x8a2be2;
+                        break;    
+                        
+                    case QbitRGBColors.Purple:
+                        tureRgb = 0xFF00FF;    
+                        break;   
+    
+                    case QbitRGBColors.White:
+                        tureRgb = 0xFFFFFF;    
+                        break;   
+                }
+       
             }
 
             let stride = this._mode === QbitRGBPixelMode.RGBW ? 4 : 3;

@@ -27,20 +27,6 @@ namespace qbit {
 	RUN = 0x01	
     }
 
-    export enum Lights {
-        //% block="Light 1"
-        Light1 = 0x00,
-        //% block="Light 2"
-        Light2 = 0x01
-    }
-
-    export enum ThreeColorLights {
-        //% block="Three color light 1"
-        Light1 = 0x02,
-        //% block="Three color light 2"
-        Light2 = 0x03
-    }
-
     export enum Exts {
         //% block="Ext 1"
         Ext1 = 0x00,
@@ -413,25 +399,6 @@ namespace qbit {
         lhRGBLight.setPixelColor(lightoffset, rgb);
     }
 
-    /**
-     * Set three Color light argument
-     */
-    //% weight=89 blockId=setThreeRGBArgs block="Set|%lightoffset|color to %rgb"
-    export function setThreeRGBArgs(lightoffset: ThreeColorLights, rgb: QbitThreeRGBColors)
-    {
-        if (lightoffset == ThreeColorLights.Light1 || lightoffset == ThreeColorLights.Light2)
-        {
-            if (rgb == QbitThreeRGBColors.Red)
-            {
-                rgb = QbitThreeRGBColors.Green;
-            }
-            else if (rgb == QbitThreeRGBColors.Green)
-            {
-                rgb = QbitThreeRGBColors.Red;
-            }    
-        }    
-        lhRGBLight.setThreePixelColor(lightoffset, rgb);
-    }
 
     /**
      * Display the colored lights, and set the color of the colored lights to match the use. After setting the color of the colored lights, the color of the lights must be displayed.
