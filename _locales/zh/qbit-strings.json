@@ -24,7 +24,7 @@
 	"qbit.Exts.Ext2|block":"扩展2口",
 	"qbit.pinIOStatus.Low|block":"高电平",
 	"qbit.pinIOStatus.Hight|block":"低电平",
-	"qbit.setExtsIO|block":"设置扩展口|%ext|O电平 %iostatus",
+	"qbit.setExtsIO|block":"设置扩展口|%ext|IO电平 %iostatus",
 	"qbit.readExtsIODigital|block":"读取扩展口|%ext|IO电平(数字量)",
 	"qbit.readExt1Analog|block":"读取扩展口1模拟量",
 	"QbitRGBColors.Red|block":"红色",
