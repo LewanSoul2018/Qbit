@@ -104,18 +104,19 @@ namespace qbit {
             SerialPin.P8,
             BaudRate.BaudRate115200);
          
-    //     basic.forever(() => {
-    //         getHandleCmd();
-    //     });
+        basic.forever(() => {
+            control.waitMicros(200);
+            getHandleCmd();
+        });
     
-    //     basic.forever(() => {
-    //         control.waitMicros(100);
-    //         sendObstacleCmd();
-    //     });
-	// basic.forever(() => {
-    //         control.waitMicros(5000);
-    //         sendBatCmd();
-    //     });
+        basic.forever(() => {
+            control.waitMicros(300);
+            sendObstacleCmd();
+        });
+	basic.forever(() => {
+            control.waitMicros(5000);
+            sendBatCmd();
+        });
     }
 
     /**
