@@ -791,7 +791,7 @@ namespace qbit {
     /**
 	 * Extension  1 pin read analog
 	 */
-    //% weight=78 blockId=readExt1Analog block="Read extension 1 pin analog"
+    //% weight=78 blockGap=50 blockId=readExt1Analog block="Read extension 1 pin analog"
     export function readExt1Analog():number
     {
         return pins.analogReadPin(AnalogPin.P2);
@@ -800,7 +800,7 @@ namespace qbit {
     /**
 	 * Get Qbit current voltage,the unit is mV
 	 */
-    //% weight=77 blockGap=50 blockId=getBatVoltage block="Get Qbit current voltage (mV)"
+    //% weight=77 blockId=getBatVoltage block="Get Qbit current voltage (mV)"
     export function getBatVoltage(): number {
         return currentVoltage;
     }
