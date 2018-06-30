@@ -113,42 +113,42 @@ namespace qbit {
         //     control.waitMicros(200);
         //     sendObstacleCmd();
         // });
-	basic.forever(() => {
-            control.waitMicros(5000);
-            sendBatCmd();
-        });
+	// basic.forever(() => {
+    //         control.waitMicros(5000);
+    //         sendBatCmd();
+    //     });
     }
 
-    /**
-    * Send the obstacle command.
-    */
-    function sendObstacleCmd() {
-        if (!serialStop)
-        {
-            let buf = pins.createBuffer(4);
-            buf[0] = 0x55;
-            buf[1] = 0x55;
-            buf[2] = 0x02;
-            buf[3] = 0x34;//cmd type
-            serial.writeBuffer(buf);
-        }
-    }
+    // /**
+    // * Send the obstacle command.
+    // */
+    // function sendObstacleCmd() {
+    //     if (!serialStop)
+    //     {
+    //         let buf = pins.createBuffer(4);
+    //         buf[0] = 0x55;
+    //         buf[1] = 0x55;
+    //         buf[2] = 0x02;
+    //         buf[3] = 0x34;//cmd type
+    //         serial.writeBuffer(buf);
+    //     }
+    // }
 	
-    /**
-    * Send the battery command.
-    */
-    function sendBatCmd() {
-        if (!serialStop)
-        {
-            let buf = pins.createBuffer(4);
-            buf[0] = 0x55;
-            buf[1] = 0x55;
-            buf[2] = 0x02;
-            buf[3] = 0x0f;//cmd type
-            serial.writeBuffer(buf);
-        }
+    // /**
+    // * Send the battery command.
+    // */
+    // function sendBatCmd() {
+    //     if (!serialStop)
+    //     {
+    //         let buf = pins.createBuffer(4);
+    //         buf[0] = 0x55;
+    //         buf[1] = 0x55;
+    //         buf[2] = 0x02;
+    //         buf[3] = 0x0f;//cmd type
+    //         serial.writeBuffer(buf);
+    //     }
 
-    }
+    // }
 
     let handleCmd: string = "";
     /**
