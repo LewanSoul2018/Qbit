@@ -108,47 +108,7 @@ namespace qbit {
         basic.forever(() => {
             getHandleCmd();
         });
-    
-        // basic.forever(() => {
-        //     control.waitMicros(200);
-        //     sendObstacleCmd();
-        // });
-	// basic.forever(() => {
-    //         control.waitMicros(5000);
-    //         sendBatCmd();
-    //     });
     }
-
-    // /**
-    // * Send the obstacle command.
-    // */
-    // function sendObstacleCmd() {
-    //     if (!serialStop)
-    //     {
-    //         let buf = pins.createBuffer(4);
-    //         buf[0] = 0x55;
-    //         buf[1] = 0x55;
-    //         buf[2] = 0x02;
-    //         buf[3] = 0x34;//cmd type
-    //         serial.writeBuffer(buf);
-    //     }
-    // }
-	
-    // /**
-    // * Send the battery command.
-    // */
-    // function sendBatCmd() {
-    //     if (!serialStop)
-    //     {
-    //         let buf = pins.createBuffer(4);
-    //         buf[0] = 0x55;
-    //         buf[1] = 0x55;
-    //         buf[2] = 0x02;
-    //         buf[3] = 0x0f;//cmd type
-    //         serial.writeBuffer(buf);
-    //     }
-
-    // }
 
     let handleCmd: string = "";
     /**
@@ -813,16 +773,6 @@ namespace qbit {
         return currentVoltage;
     }
 
-    /**
-	 *Start handling the bluetooth command
-	 */
-    //% weight=77 blockId=handleBluetoothCmd block="Handle the bluetooth command start"
-    export function handleBluetoothCmd() {
-        serialStop = true;
-    }
-
-    
-
      /**
      * Resolve the Bluetooth that phone APP send command type, the total of nine types of commands: tank display command, servo debug command, obtaining the distance of ultrasonic command, obtaining temperature command, obtain sound size rank orders, to obtain the light level command, set the color lights command, honking command, firmware version information command.
      */
@@ -977,13 +927,4 @@ namespace qbit {
         cmdStr += "|$";
         return cmdStr;
     }
-
-    /**
-	 * Stop handling the bluetooth command
-	 */
-    //% weight=60 blockId=handleBluetoothCmdEnd block="Handle the bluetooth command end"
-    export function handleBluetoothCmdEnd() {
-        serialStop = false;
-    }
-
 }
