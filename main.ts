@@ -268,7 +268,7 @@ namespace qbit {
 /**
 *  Obtain the distance of ultrasonic detection to the obstacle
 */
-//% weight=96 blockId=Ultrasonic block="Ultrasonic distance(cm)"
+//% weight=97 blockId=Ultrasonic block="Ultrasonic distance(cm)"
    export function Ultrasonic(): number {
 	   //init pins
    let echoPin:DigitalPin = DigitalPin.P13;
@@ -286,7 +286,24 @@ namespace qbit {
    // read pulse
    let d = pins.pulseIn(echoPin, PulseValue.High, 11600);
    return d / 58;
-   }
+    }
+    
+    
+/**
+*  Send ultrasonic distance to control board
+*/
+//% weight=96 blockId=UltrasonicSend block="Send ultrasonic distance to control board"
+    export function UltrasonicSend() {
+    let distance = Ultrasonic();
+    let buf = pins.createBuffer(6);
+    buf[0] = 0x55;
+    buf[1] = 0x55;
+    buf[2] = 0x04;
+    buf[3] = 0x33;//cmd type
+    buf[4] = distance & 0xff;
+    buf[5] = (distance >> 8) & 0xff;
+    serial.writeBuffer(buf);
+ }
    
       /**
     * Stop Qbit run.
