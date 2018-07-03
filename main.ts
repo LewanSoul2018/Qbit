@@ -711,7 +711,7 @@ namespace qbit {
          serial.writeNumber(b); 
          serial.writeLine("->blue"); 
 	     
-	       if(r > 13000 && g > 15000 && b > 23800)
+	       if(r > 6800 && g > 8000 && b > 12000)
 	       {
 		       t = Colors.White;
 	       }
