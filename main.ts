@@ -289,7 +289,8 @@ namespace qbit {
    control.waitMicros(5);
    // read pulse
    let d = pins.pulseIn(echoPin, PulseValue.High, 11600);
-   return d / 40;
+    basic.pause(10);
+    return d / 40;
     }
     
     
@@ -699,35 +700,32 @@ namespace qbit {
 
 		if (t == Colors.Green && g < b)
 		{
-			t = Colors.Blue;
+			if(b - g > 500)
+			   t = Colors.Blue;
 		}	
 		if (t == Colors.Red && r < b)
 		{
 			t = Colors.Blue;
          }
-        serial.writeNumber(r); 
-         serial.writeLine("->red");
-         serial.writeNumber(g); 
-         serial.writeLine("->green"); 
-         serial.writeNumber(b); 
-         serial.writeLine("->blue"); 
+//         serial.writeNumber(r); 
+//          serial.writeLine("->red");
+//          serial.writeNumber(g); 
+//          serial.writeLine("->green"); 
+//          serial.writeNumber(b); 
+//          serial.writeLine("->blue"); 
 	     
 	       if(r > 6800 && g > 8000 && b > 12000)
 	       {
 		       t = Colors.White;
 	       }
-	       else if(r < 800 && g < 1080 && b < 1300)
-	       {
-		       t = Colors.Black;
-		}
-		else if (t == Colors.Blue && b > 1500) {
+		else if (t == Colors.Blue && b > 2800) {
            // serial.writeLine("blue");
             
 		}
 		else if (t == Colors.Green && g > 1500) {
            // serial.writeLine("green");
 		}
-		else if (t == Colors.Red && r > 1500) {
+		else if (t == Colors.Red && r > 3000) {
 			//serial.writeLine("red");
 		}
 		else
