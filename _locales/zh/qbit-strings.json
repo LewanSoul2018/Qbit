@@ -20,6 +20,8 @@
 	"qbit.Colors.Red|block":"红色",
 	"qbit.Colors.Green|block":"绿色",
 	"qbit.Colors.Blue|block":"蓝色",
+	"qbit.Colors.White|block":"白色",
+	"qbit.Colors.Black|block":"黑色",
 	"qbit.Exts.Ext1|block":"扩展1口",
 	"qbit.Exts.Ext2|block":"扩展2口",
 	"qbit.pinIOStatus.Low|block":"高电平",
