@@ -718,6 +718,10 @@ namespace qbit {
 	       {
 		       t = Colors.White;
 	       }
+	       else if(r < 800 && g < 1100 && b < 1300)
+		{
+		        t = Colors.Black;
+		 }
 		else if (t == Colors.Blue && b > 2800) {
            // serial.writeLine("blue");
             
