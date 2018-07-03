@@ -282,11 +282,11 @@ namespace qbit {
 		   
    // send pulse
    pins.digitalWritePin(trigPin, 0);
-   control.waitMicros(2);
+   control.waitMicros(5);
    pins.digitalWritePin(trigPin, 1);
    control.waitMicros(10);
    pins.digitalWritePin(trigPin, 0);
-   control.waitMicros(2);
+   control.waitMicros(5);
    // read pulse
    let d = pins.pulseIn(echoPin, PulseValue.High, 11600);
    return d / 40;
@@ -679,6 +679,7 @@ namespace qbit {
 	 */
 	//% weight=84 blockId=checkCurrentColor block="Current color %color"
      export function checkCurrentColor(color: Colors): boolean {
+	setBrightness(200);     
         setPixelRGB(Lights.Light1, QbitRGBColors.White);
         setPixelRGB(Lights.Light2, QbitRGBColors.White);
         showLight(); 
