@@ -704,15 +704,22 @@ namespace qbit {
 		{
 			t = Colors.Blue;
          }
-        serial.writeNumber(r); 
-         serial.writeLine("->red");
-         serial.writeNumber(g); 
-         serial.writeLine("->green"); 
-         serial.writeNumber(b); 
-         serial.writeLine("->blue"); 
+//         serial.writeNumber(r); 
+//          serial.writeLine("->red");
+//          serial.writeNumber(g); 
+//          serial.writeLine("->green"); 
+//          serial.writeNumber(b); 
+//          serial.writeLine("->blue"); 
 	     
-        
-		if (t == Colors.Blue && b > 1500) {
+	       if(r > 13000 && g > 15000 && b > 23800)
+	       {
+		       t = Colors.White;
+	       }
+	       else if(r < 800 && g < 1080 && b < 1300)
+	       {
+		       t = Colors.Black;
+		}
+		else if (t == Colors.Blue && b > 1500) {
            // serial.writeLine("blue");
             
 		}
