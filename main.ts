@@ -10,7 +10,11 @@ namespace qbit {
         //% blockId="Green" block="Green"
         Green = 0x02,
         //% blockId="Blue" block="Blue"
-        Blue = 0x03
+        Blue = 0x03,
+	//% blockId="White" block="White"
+        White = 0x04,
+	//% blockId="Black" block="Black"
+        Black = 0x05	
     }
 
     export enum ObstacleSensor {
@@ -285,7 +289,7 @@ namespace qbit {
    control.waitMicros(2);
    // read pulse
    let d = pins.pulseIn(echoPin, PulseValue.High, 11600);
-   return d / 58;
+   return d / 40;
     }
     
     
@@ -700,12 +704,13 @@ namespace qbit {
 		{
 			t = Colors.Blue;
          }
-        // serial.writeNumber(r); 
-        //  serial.writeLine("->red");
-        //  serial.writeNumber(g); 
-        //  serial.writeLine("->green"); 
-        //  serial.writeNumber(b); 
-        //  serial.writeLine("->blue"); 
+        serial.writeNumber(r); 
+         serial.writeLine("->red");
+         serial.writeNumber(g); 
+         serial.writeLine("->green"); 
+         serial.writeNumber(b); 
+         serial.writeLine("->blue"); 
+	     
         
 		if (t == Colors.Blue && b > 1500) {
            // serial.writeLine("blue");
