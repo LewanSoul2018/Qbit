@@ -97,7 +97,7 @@ namespace QbitRGBLight {
                         break;    
     
                     case QbitRGBColors.Orange:
-                        tureRgb = 0xA5FF00;    
+                        tureRgb = 0xF6BA41;    
                         break;    
     
                     case QbitRGBColors.Yellow:
