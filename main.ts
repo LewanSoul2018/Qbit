@@ -680,7 +680,7 @@ namespace qbit {
 	 */
 	//% weight=84 blockId=checkCurrentColor block="Current color %color"
      export function checkCurrentColor(color: Colors): boolean {
-	setBrightness(200);     
+	setBrightness(150);     
         setPixelRGB(Lights.Light1, QbitRGBColors.White);
         setPixelRGB(Lights.Light2, QbitRGBColors.White);
         showLight(); 
@@ -700,7 +700,7 @@ namespace qbit {
 
 		if (t == Colors.Green && g < b)
 		{
-			if(b - g > 500)
+			if(b - g > 1000)
 			   t = Colors.Blue;
 		}	
 		if (t == Colors.Red && r < b)
