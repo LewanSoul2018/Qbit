@@ -72,5 +72,6 @@
 	"qbit.convertLight|block":"转换光线命令 %data",
 	"qbit.convertBattery|block":"转换电量命令 %data",
 	"qbit.getBatVoltage|block":"获取qbit当前电压值(mV)",
-	"qbit.UltrasonicSend|block":"发送超声波测试距离到控制板中"
+	"qbit.UltrasonicSend|block":"发送超声波测试距离到控制板中",
+	"qbit.setBLAngle|block":"设置Qbit中心平衡角度"
 }
