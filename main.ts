@@ -249,7 +249,7 @@ namespace qbit {
 /**
 *	Set the speed of the number 1 motor and number 2 motor, range of -100~100, that can control the tank to go advance or turn of.
 */
-//% weight=98 blockId=setMotorSpeed block="Set motor1 speed|%speed1|and motor2|speed %speed2"
+//% weight=99 blockId=setMotorSpeed block="Set motor1 speed|%speed1|and motor2|speed %speed2"
 //% speed1.min=-100 speed1.max=100
 //% speed2.min=-100 speed2.max=100
     export function setMotorSpeed(speed1: number, speed2: number) {
@@ -268,6 +268,20 @@ namespace qbit {
    serial.writeBuffer(buf);
 }
     
+    
+/**
+* Set the center balance angle of the Qbit
+*/
+//% weight=98 blockId=setBLAngle block="Set the center balance angle of the Qbit"
+    export function setBLAngle() {
+   let buf = pins.createBuffer(5);
+   buf[0] = 0x55;
+   buf[1] = 0x55;
+   buf[2] = 0x03;
+   buf[3] = 61;//cmd type
+   buf[4] = 0;
+   serial.writeBuffer(buf);
+}    
 
 /**
 *  Obtain the distance of ultrasonic detection to the obstacle
