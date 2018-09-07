@@ -371,7 +371,12 @@ namespace qbit {
 		if (!lhRGBLight) {
 			lhRGBLight = QbitRGBLight.create(DigitalPin.P15, 4, QbitRGBPixelMode.RGB);
         }
-        clearLight();
+       // clearLight();
+        setPixelRGB(Lights.Light1, QbitRGBColors.White);
+        setPixelRGB(Lights.Light2, QbitRGBColors.White);
+        setPixelRGB(Lights.Light3, QbitRGBColors.White);
+        setPixelRGB(Lights.Light4, QbitRGBColors.White);
+        showLight();
     }
 
     /**
