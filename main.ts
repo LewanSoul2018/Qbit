@@ -789,7 +789,7 @@ namespace qbit {
 	 * Extension pin read digital
 	 */
     //% weight=80 blockId=readExtsIODigital block="Read extension pin|%ext|digital"
-    export function readExtsIODigital(ext: Exts):number
+    export function readExtsIODigital(ext: Exts):boolean
     {
         let status = 0;
         if (ext == Exts.Ext1)
@@ -800,7 +800,14 @@ namespace qbit {
         {
             status = pins.digitalReadPin(DigitalPin.P16);
         }    
-        return status;
+	if(status == 0)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
      } 
     /**
 	 * Extension  1 pin read analog
