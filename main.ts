@@ -2,7 +2,7 @@
  qbit package
 */
  //% weight=10 icon="\uf013" color=#2896ff
-namespace qbit {
+ namespace qbit {
 	
     export enum Colors {
         //% blockId="Red" block="Red"
@@ -97,6 +97,8 @@ namespace qbit {
     let obstacleSensor2: boolean = false;
     let currentVoltage: number = 0;
     let serialStop: boolean = false;
+    let versionFlag: boolean = false; 
+    let readTimes = 0;
 	/**
    * Qbit initialization, please execute at boot time
   */
@@ -112,7 +114,23 @@ namespace qbit {
         basic.forever(() => {
             getHandleCmd();
         });
+        while(readTimes < 5 && !versionFlag)
+        {
+            readTimes++;
+            sendVersionCmd();
+            basic.pause(30)
+        }
     }
+
+
+    function sendVersionCmd() {
+        let buf = pins.createBuffer(4);
+        buf[0] = 0x55;
+        buf[1] = 0x55;
+        buf[2] = 0x02;
+        buf[3] = 0x12;//cmd type
+        serial.writeBuffer(buf);
+ }
 
     let handleCmd: string = "";
     /**
@@ -160,6 +178,10 @@ namespace qbit {
                     currentVoltage = argInt;
                 }    
             }  
+            if (cmd.charAt(0).compare("V") == 0 && cmd.length == 4)
+            {
+                versionFlag = true;
+            }   
         }
         handleCmd = "";
     }
@@ -390,7 +412,7 @@ namespace qbit {
     //% weight=91 blockId=setPixelRGB block="Set|%lightoffset|color to %rgb"
     export function setPixelRGB(lightoffset: Lights, rgb: QbitRGBColors)
     { 
-        lhRGBLight.setPixelColor(lightoffset, rgb);
+        lhRGBLight.setPixelColor(lightoffset, rgb, versionFlag);
      }
     
 
@@ -400,7 +422,7 @@ namespace qbit {
     //% weight=90 blockId=setPixelRGBArgs block="Set|%lightoffset|color to %rgb"
     export function setPixelRGBArgs(lightoffset: Lights, rgb: number)
     {
-        lhRGBLight.setPixelColor(lightoffset, rgb);
+        lhRGBLight.setPixelColor(lightoffset, rgb, versionFlag);
     }
 
 

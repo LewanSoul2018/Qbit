@@ -78,17 +78,17 @@ namespace QbitRGBLight {
             // don't yield to avoid races on initialization
         }
 
-        setPixelColor(pixeloffset: number, rgb: QbitRGBColors): void {
-            this.setPixelRGB(pixeloffset, rgb);
+        setPixelColor(pixeloffset: number, rgb: QbitRGBColors, flag: boolean): void {
+            this.setPixelRGB(pixeloffset, rgb, flag);
         }
 
-        private setPixelRGB(pixeloffset: number, rgb: QbitRGBColors): void {
+        private setPixelRGB(pixeloffset: number, rgb: QbitRGBColors, flag: boolean): void {
             if (pixeloffset < 0
                 || pixeloffset >= this._length)
                 return;
             let tureRgb = 0;
         
-            if (pixeloffset == 2 || pixeloffset == 3)
+            if ((pixeloffset == 2 || pixeloffset == 3)&&!flag)
             {
                 switch (rgb)
                 {
