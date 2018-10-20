@@ -114,7 +114,7 @@
         basic.forever(() => {
             getHandleCmd();
         });
-	basic.pause(2500);
+	basic.pause(1500);
         while(readTimes < 10 && !versionFlag)
         {
             readTimes++;
