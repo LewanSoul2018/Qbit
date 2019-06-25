@@ -1,6 +1,6 @@
 # qbit
 
-Blocks for LewanSoul Qbit
+Blocks for LOBOT Qbit
 
 ## License
 

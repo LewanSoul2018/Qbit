@@ -11,12 +11,24 @@
         Green = 0x02,
         //% blockId="Blue" block="Blue"
         Blue = 0x03,
-	//% blockId="White" block="White"
+	    //% blockId="White" block="White"
         White = 0x04,
-	//% blockId="Black" block="Black"
-        Black = 0x05	
+	    //% blockId="Black" block="Black"
+        Black = 0x05,	
+        //% block="None"
+        None = 0x06
     }
 
+    export enum qbit_RGBValue {
+        //% block="Red"
+        Red = 0x01,
+        //% block="Green"
+        Green = 0x02,
+        //% block="Blue"
+        Blue = 0x03  
+    }
+
+     
     export enum ObstacleSensor {
         //% block="sensor 1"
         SENSOR1_OBSTACLE = 0x01,
@@ -444,110 +456,84 @@
     }
 
 
-	const APDS9960_I2C_ADDR = 0x39;
+    const APDS9960_I2C_ADDR = 0x39;
     const APDS9960_ID_1 = 0xA8;
     const APDS9960_ID_2 = 0x9C;
     /* APDS-9960 register addresses */
     const APDS9960_ENABLE = 0x80;
-    const APDS9960_ATIME  = 0x81;
-    const APDS9960_WTIME  = 0x83;
-    const APDS9960_AILTL  = 0x84;
-    const APDS9960_AILTH  = 0x85;
-    const APDS9960_AIHTL  = 0x86;
-    const APDS9960_AIHTH  = 0x87;
-    const APDS9960_PILT = 0x89;
-    const APDS9960_PIHT = 0x8B;
+    const APDS9960_ATIME = 0x81;
+    const APDS9960_WTIME = 0x83;
+    const APDS9960_AILTL = 0x84;
+    const APDS9960_AILTH = 0x85;
+    const APDS9960_AIHTL = 0x86;
+    const APDS9960_AIHTH = 0x87;
     const APDS9960_PERS = 0x8C;
     const APDS9960_CONFIG1 = 0x8D;
-    const APDS9960_PPULSE  = 0x8E;
+    const APDS9960_PPULSE = 0x8E;
     const APDS9960_CONTROL = 0x8F;
     const APDS9960_CONFIG2 = 0x90;
     const APDS9960_ID = 0x92;
-    const APDS9960_STATUS  = 0x93;
-    const APDS9960_CDATAL  = 0x94;
-    const APDS9960_CDATAH  = 0x95;
-    const APDS9960_RDATAL  = 0x96;
-    const APDS9960_RDATAH  = 0x97;
-    const APDS9960_GDATAL  = 0x98;
-    const APDS9960_GDATAH  = 0x99;
-    const APDS9960_BDATAL  = 0x9A;
-    const APDS9960_BDATAH  = 0x9B;
-    const APDS9960_PDATA   = 0x9C;
+    const APDS9960_STATUS = 0x93;
+    const APDS9960_CDATAL = 0x94;
+    const APDS9960_CDATAH = 0x95;
+    const APDS9960_RDATAL = 0x96;
+    const APDS9960_RDATAH = 0x97;
+    const APDS9960_GDATAL = 0x98;
+    const APDS9960_GDATAH = 0x99;
+    const APDS9960_BDATAL = 0x9A;
+    const APDS9960_BDATAH = 0x9B;
     const APDS9960_POFFSET_UR = 0x9D;
     const APDS9960_POFFSET_DL = 0x9E;
     const APDS9960_CONFIG3 = 0x9F;
+    const APDS9960_GCONF4 = 0xAB;
+    const APDS9960_AICLEAR = 0xE7;
 
 
     /* LED Drive values */
     const LED_DRIVE_100MA = 0;
-    const LED_DRIVE_50MA = 1;
-    const LED_DRIVE_25MA = 2;
-    const LED_DRIVE_12_5MA = 3;
 
     /* ALS Gain (AGAIN) values */
-    const AGAIN_1X = 0;
     const AGAIN_4X = 1;
-    const AGAIN_16X = 2;
-    const AGAIN_64X = 3;
-    
+
     /* Default values */
     const DEFAULT_ATIME = 219;    // 103ms
     const DEFAULT_WTIME = 246;    // 27ms
     const DEFAULT_PROX_PPULSE = 0x87;    // 16us, 8 pulses
-    const DEFAULT_GESTURE_PPULSE = 0x89;    // 16us, 10 pulses
     const DEFAULT_POFFSET_UR = 0;       // 0 offset
     const DEFAULT_POFFSET_DL = 0;       // 0 offset      
     const DEFAULT_CONFIG1 = 0x60;    // No 12x wait (WTIME) factor
-    const DEFAULT_PILT = 0;       // Low proximity threshold
-    const DEFAULT_PIHT = 50;      // High proximity threshold
     const DEFAULT_AILT = 0xFFFF;  // Force interrupt for calibration
     const DEFAULT_AIHT = 0;
     const DEFAULT_PERS = 0x11;    // 2 consecutive prox or ALS for int.
     const DEFAULT_CONFIG2 = 0x01;    // No saturation interrupts or LED boost  
     const DEFAULT_CONFIG3 = 0;       // Enable all photodiodes, no SAI
-    const DEFAULT_GPENTH = 40;      // Threshold for entering gesture mode
-    const DEFAULT_GEXTH = 30;      // Threshold for exiting gesture mode    
-    const DEFAULT_GCONF1 = 0x40;    // 4 gesture events for int., 1 for exit
-    const DEFAULT_GOFFSET = 0;       // No offset scaling for gesture mode
-    const DEFAULT_GPULSE = 0xC9;    // 32us, 10 pulses
-    const DEFAULT_GCONF3 = 0;       // All photodiodes active during gesture
-    const DEFAULT_GIEN = 0;       // Disable gesture interrupts
     const DEFAULT_LDRIVE = LED_DRIVE_100MA;
     const DEFAULT_AGAIN = AGAIN_4X;
-    
+
     const OFF = 0;
-    const ON = 1;
     const POWER = 0;
     const AMBIENT_LIGHT = 1;
-    const PROXIMITY = 2;
-    const WAIT = 3;
-    const AMBIENT_LIGHT_INT = 4;
-    const PROXIMITY_INT = 5;
-    const GESTURE = 6;
     const ALL = 7;
 
+    const red_wb = 2500;
+    const green_wb = 3900;
+    const blue_wb = 5820;
 
     function i2cwrite(reg: number, value: number) {
-       let buf = pins.createBuffer(2);
-       buf[0] = reg;
-       buf[1] = value;
-       pins.i2cWriteBuffer(APDS9960_I2C_ADDR, buf);
+        let buf = pins.createBuffer(2);
+        buf[0] = reg;
+        buf[1] = value;
+        pins.i2cWriteBuffer(APDS9960_I2C_ADDR, buf);
     }
 
-     function i2cread(reg: number): number {
-		pins.i2cWriteNumber(APDS9960_I2C_ADDR, reg, NumberFormat.UInt8BE);
+    function i2cread(reg: number): number {
+        pins.i2cWriteNumber(APDS9960_I2C_ADDR, reg, NumberFormat.UInt8BE);
         let val = pins.i2cReadNumber(APDS9960_I2C_ADDR, NumberFormat.UInt8BE);
         return val;
     }
 
      function InitColor(): boolean {
-         let id = i2cread(APDS9960_ID);
-        //  serial.writeLine("id:")
-        //  serial.writeNumber(id); 
-        if (!(id == APDS9960_ID_1 || id == APDS9960_ID_2)) {
-            return false;
-         }
-        //  serial.writeLine("set mode:")
+        let id = i2cread(APDS9960_ID);
         setMode(ALL, OFF);
         i2cwrite(APDS9960_ATIME, DEFAULT_ATIME);
         i2cwrite(APDS9960_WTIME, DEFAULT_WTIME);
@@ -562,236 +548,222 @@
         i2cwrite(APDS9960_PERS, DEFAULT_PERS);
         i2cwrite(APDS9960_CONFIG2, DEFAULT_CONFIG2);
         i2cwrite(APDS9960_CONFIG3, DEFAULT_CONFIG3);
-        return true;  
+        return true; 
     }
         
-     function setMode(mode: number, enable: number) {
-         let reg_val = getMode();
-            /* Change bit(s) in ENABLE register */
-        enable = enable & 0x01;
-         if (mode >= 0 && mode <= 6)
-         {
-             if (enable > 0)
-             {
-                reg_val |= (1 << mode);
-             }
-             else
-             {
-                //reg_val &= ~(1 << mode);
-                 reg_val &= (0xff-(1 << mode)); 
-             }
-        }
-         else if(mode == ALL)
-         {
-             if (enable > 0)
-             {
-                reg_val = 0x7F;
-             }
-             else
-             {
-                reg_val = 0x00;
-             }
-        }
-        i2cwrite(APDS9960_ENABLE,reg_val);
-    }
-    
-     function getMode(): number {
-            let enable_value = i2cread(APDS9960_ENABLE);
-            return enable_value;
-        }
+     
+	/**
+	 * Init Color Sensor
+	 */
+	export function initColorSensor() {
+        InitColor();
+		enableLightSensor(true);
+		control.waitMicros(100);
+	}
 
-     function setLEDDrive(drive: number) {
+	
+	function setLEDDrive(drive: number) {
         let val = i2cread(APDS9960_CONTROL);
-            /* Set bits in register to given value */
-         drive &= 0b00000011;
-         drive = drive << 6;
-         val &= 0b00111111;
-         val |= drive;
-         i2cwrite(APDS9960_CONTROL,val);
+        /* Set bits in register to given value */
+        drive &= 0b00000011;
+        drive = drive << 6;
+        val &= 0b00111111;
+        val |= drive;
+        i2cwrite(APDS9960_CONTROL, val);
     }
-    
-     function setLightIntLowThreshold(threshold: number) {
+
+    function setLightIntLowThreshold(threshold: number) {
         let val_low = threshold & 0x00FF;
         let val_high = (threshold & 0xFF00) >> 8;
         i2cwrite(APDS9960_AILTL, val_low);
-        i2cwrite(APDS9960_AILTH,val_high);
+        i2cwrite(APDS9960_AILTH, val_high);
     }
 
-     function setLightIntHighThreshold(threshold: number) {
+    function setLightIntHighThreshold(threshold: number) {
         let val_low = threshold & 0x00FF;
         let val_high = (threshold & 0xFF00) >> 8;
         i2cwrite(APDS9960_AIHTL, val_low);
         i2cwrite(APDS9960_AIHTH, val_high);
     }
 
-     function enableLightSensor(interrupts: boolean) {
+
+    function rgb2hue(r: number, g: number, b: number): number {
+        let max = Math.max(r, Math.max(g, b))
+        let min = Math.min(r, Math.min(g, b))
+        let c = max - min;
+        let hue = 0;
+        let segment = 0;
+        let shift = 0;
+        if (c == 0)
+            return 0;
+        if ((r > g) && (r > b)) {
+            segment = (60.0 * (g - b)) / c;
+            if (segment < 0)
+                hue = segment + 360;
+        }
+        else if ((g > b) && (g > r)) {
+            segment = (60.0 * (b - r)) / c;
+            hue = segment + 120;
+        }
+        else if ((b > g) && (b > r)) {
+            segment = (60.0 * (r - g)) / c;
+            hue = segment + 240;
+        }
+        return hue;
+    }
+
+    function setMode(mode: number, enable: number) {
+        let reg_val = getMode();
+        /* Change bit(s) in ENABLE register */
+        enable = enable & 0x01;
+        if (mode >= 0 && mode <= 6) {
+            if (enable > 0) {
+                reg_val |= (1 << mode);
+            }
+            else {
+                //reg_val &= ~(1 << mode);
+                reg_val &= (0xff - (1 << mode));
+            }
+        }
+        else if (mode == ALL) {
+            if (enable > 0) {
+                reg_val = 0x7F;
+            }
+            else {
+                reg_val = 0x00;
+            }
+        }
+        i2cwrite(APDS9960_ENABLE, reg_val);
+    }
+
+    function getMode(): number {
+        let enable_value = i2cread(APDS9960_ENABLE);
+        return enable_value;
+    }
+
+    function enableLightSensor(interrupts: boolean) {
         setAmbientLightGain(DEFAULT_AGAIN);
-        if (interrupts)
-        {
+        if (interrupts) {
             setAmbientLightIntEnable(1);
-        }   
-        else
-        {
+        }
+        else {
             setAmbientLightIntEnable(0);
         }
         enablePower();
-        setMode(AMBIENT_LIGHT,1);
+        setMode(AMBIENT_LIGHT, 1);
     }
 
-     function setAmbientLightGain(drive: number) {
+    function setAmbientLightGain(drive: number) {
         let val = i2cread(APDS9960_CONTROL);
-            /* Set bits in register to given value */
+        /* Set bits in register to given value */
         drive &= 0b00000011;
         val &= 0b11111100;
         val |= drive;
-        i2cwrite(APDS9960_CONTROL,val);
+        i2cwrite(APDS9960_CONTROL, val);
     }
 
-     function getAmbientLightGain(): number {
+    function getAmbientLightGain(): number {
         let val = i2cread(APDS9960_CONTROL);
         val &= 0b00000011;
         return val;
     }
 
-     function enablePower() {
-        setMode(POWER,1);
+    function enablePower() {
+        setMode(POWER, 1);
     }
 
-     function setAmbientLightIntEnable(enable: number) {
+    function setAmbientLightIntEnable(enable: number) {
         let val = i2cread(APDS9960_ENABLE);
-            /* Set bits in register to given value */
+        /* Set bits in register to given value */
         enable &= 0b00000001;
         enable = enable << 4;
         val &= 0b11101111;
         val |= enable;
         i2cwrite(APDS9960_ENABLE, val);
     }
-
-     function readAmbientLight(): number {
-        let val_byte = i2cread(APDS9960_CDATAL);
-        let val = val_byte;
-        val_byte = i2cread(APDS9960_CDATAH);
-        val = val + val_byte << 8;
-        return val;
-    }
-    
-     function readRedLight(): number {
-     
-        let val_byte = i2cread(APDS9960_RDATAL);
-        let val = val_byte;
-        val_byte = i2cread(APDS9960_RDATAH);
-        val = val + val_byte << 8;
-        return val;
-    }
-
-     function readGreenLight(): number {
-        
-           let val_byte = i2cread(APDS9960_GDATAL);
-           let val = val_byte;
-           val_byte = i2cread(APDS9960_GDATAH);
-           val = val + val_byte << 8;
-           return val;
-    }
-    
-     function readBlueLight(): number {
-        
-           let val_byte = i2cread(APDS9960_BDATAL);
-           let val = val_byte;
-           val_byte = i2cread(APDS9960_BDATAH);
-           val = val + val_byte << 8;
-           return val;
-       }
-
-	/**
-	 * Init Color Sensor
+    /**
+	 *  Color sensor return the color.
 	 */
-	export function initColorSensor() {
-        InitColor();
-		enableLightSensor(false);
-		control.waitMicros(100);
-	}
+    //% weight=84 blockId=checkCurrentColor block="Current color %color"
+    export function checkCurrentColor(color: Colors): boolean {
+        let c = i2cread(APDS9960_CDATAL) + i2cread(APDS9960_CDATAH) * 256;
+        let r = i2cread(APDS9960_RDATAL) + i2cread(APDS9960_RDATAH) * 256;
+        let g = i2cread(APDS9960_GDATAL) + i2cread(APDS9960_GDATAH) * 256;
+        let b = i2cread(APDS9960_BDATAL) + i2cread(APDS9960_BDATAH) * 256;
 
-	
-	/**
-	 *  Color sensor to obtain color value.
-	 */
-	//% weight=84 blockId=checkCurrentColor block="Current color %color"
-     export function checkCurrentColor(color: Colors): boolean {
-	setBrightness(150);     
-        setPixelRGB(Lights.Light1, QbitRGBColors.White);
-        setPixelRGB(Lights.Light2, QbitRGBColors.White);
-        showLight(); 
-		let r = readRedLight();
-		let g = readGreenLight();
-		let b = readBlueLight();
-        let t = Colors.Red;
-    
-		if (r > g)
-		{
-			t = Colors.Red;
-		}	
-		else
-		{
-			t = Colors.Green;
-		}	
+        if (r > red_wb)
+            r = red_wb;
+        if (g > green_wb)
+            g = green_wb;
+        if (b > blue_wb)
+            b = blue_wb;
 
-		if (t == Colors.Green && g < b)
-		{
-			if(b - g > 1000)
-			   t = Colors.Blue;
-		}	
-		if (t == Colors.Red && r < b)
-		{
-			t = Colors.Blue;
-         }
-//         serial.writeNumber(r); 
-//          serial.writeLine("->red");
-//          serial.writeNumber(g); 
-//          serial.writeLine("->green"); 
-//          serial.writeNumber(b); 
-//          serial.writeLine("->blue"); 
-	     
-	       if(r > 6800 && g > 8000 && b > 12000)
-	       {
-		       t = Colors.White;
-	       }
-	       else if(r < 800 && g < 1100 && b < 1300)
-		{
-		        t = Colors.Black;
-		 }
-		else if (t == Colors.Blue && b > 2800) {
-           // serial.writeLine("blue");
-            
-		}
-		else if (t == Colors.Green && g > 1500) {
-           // serial.writeLine("green");
-		}
-		else if (t == Colors.Red && r > 3000) {
-			//serial.writeLine("red");
-		}
-		else
-        {
-            //serial.writeLine("none");
-            return false;
-        }		
+        r = Math.round(mapRGB(r, 0, red_wb, 0, 255));
+        g = Math.round(mapRGB(g, 0, green_wb, 0, 255));
+        b = Math.round(mapRGB(b, 0, blue_wb, 0, 255));
+
+        let hsv = rgb2hue(r, g, b)
+        let t = Colors.None;
+        if (c > 2200 && r > 65 && g > 65 && b > 65) {
+            t = Colors.White;
+        }
+        else if (c > 800) {
+            if (hsv < 8 || hsv > 350)
+                t = Colors.Red;
+            else if (hsv > 60 && hsv < 170) {
+                t = Colors.Green;
+            }
+            else if (hsv > 210 && hsv < 230) {
+                t = Colors.Blue;
+            }
+        }
+        else if (c > 200 && r > 10 && g > 7 && b > 7 && r < 16.5 && g < 15 && b < 14) {
+            t = Colors.Black;
+        }
         return (color == t);
-	}
+    }
+    /**
+	 *  Color sensor return the color.
+	 */
+    //% weight=82 blockId=qdee_get_color block="color %color value(0~255)"
+    export function qdee_get_color(color: qbit_RGBValue): number {
+        let value = 0;
+        let r = i2cread(APDS9960_RDATAL) + i2cread(APDS9960_RDATAH) * 256;
+        let g = i2cread(APDS9960_GDATAL) + i2cread(APDS9960_GDATAH) * 256;
+        let b = i2cread(APDS9960_BDATAL) + i2cread(APDS9960_BDATAH) * 256;
+
+        if (r > red_wb)
+            r = red_wb;
+        if (g > green_wb)
+            g = green_wb;
+        if (b > blue_wb)
+            b = blue_wb;
+
+        r = Math.round(mapRGB(r, 0, red_wb, 0, 255));
+        g = Math.round(mapRGB(g, 0, green_wb, 0, 255));
+        b = Math.round(mapRGB(b, 0, blue_wb, 0, 255));
+
+        switch (color)
+        {
+            case qbit_RGBValue.Red:
+                value = r;
+                break;
+            
+            case qbit_RGBValue.Green:
+                value = g;
+                break;
+            
+            case qbit_RGBValue.Blue:
+                value = b;
+                break;
+        }
+        return value;
+    }
 
 	function mapRGB(x: number, in_min: number, in_max: number, out_min: number, out_max: number): number {
 		return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
      }
     
-    /**
-	 *  Color sensor light level, range from 0 ~ 255
-	 */
-	//% weight=83 blockGap=50 blockId=getSensorLightLevel block="Get color sensor light level"
-     export function getSensorLightLevel(): number {
-         let lightLevel: number = readAmbientLight();
-         serial.writeNumber(lightLevel); 
-         serial.writeLine("->light level");
-         return lightLevel;
-     }
-
     /**
 	 * Extension pin set
 	 */
@@ -853,6 +825,7 @@
      * Resolve the Bluetooth that phone APP send command type, the total of nine types of commands: tank display command, servo debug command, obtaining the distance of ultrasonic command, obtaining temperature command, obtain sound size rank orders, to obtain the light level command, set the color lights command, honking command, firmware version information command.
      */
     //% weight=76 blockId=analyzeBluetoothCmd block="Get bluetooth command type %str"
+    //% subcategory=Bluetooth 
     export function analyzeBluetoothCmd(str: string): number {
         if (str.length > 9)
         {
@@ -901,9 +874,11 @@
 
     /**
      * Resolve the parameters that the phone APP send the command,there are 3 parameters of servo debug command,the other command has just one parameter.
+     * @param index the index of the arguments in 1~3. eg: 1
      */
     //% weight=74  blockId=getArgs block="Get bluetooth command|%str|argument at %index"
     //% index.min=1 index.max=3
+    //% subcategory=Bluetooth 
     export function getArgs(str: string, index: number): number {
         let cmdType = analyzeBluetoothCmd(str);
         if (cmdType == CmdType.NO_COMMAND)
@@ -948,6 +923,7 @@
      * Returns the enumeration of the command type, which can be compared with this module after obtaining the bluetooth command type sent by the mobile phone APP.
      */
     //% weight=72 blockId=getBluetoothCmdtype block="Bluetooth command type %type"
+    //% subcategory=Bluetooth 
     export function getBluetoothCmdtype(type: CmdType): number {
         return type;
     }
@@ -956,6 +932,7 @@
      * The command type of the tank is stop, go ahead, back, turn left, turn right, slow down, turn left slowly, turn right slowly.
      */
     //% weight=70 blockId=getRunCarType block="Car run type %type"
+    //% subcategory=Bluetooth  
     export function getRunCarType(type: CarRunCmdType): number {
         return type;
     }
@@ -964,6 +941,7 @@
      * The distance from the ultrasonic obstacle to the standard command, which is sent to the mobile phone. The APP will indicate the distance of the ultrasonic obstacle.
      */
     //% weight=68 blockId=convertUltrasonic block="Convert ultrasonic distance %data"
+   //% subcategory=Bluetooth   
     export function convertUltrasonic(data: number): string {
         let cmdStr: string = "CMD|03|";
         cmdStr += data.toString();
@@ -975,6 +953,7 @@
      * The conversion temperature value to standard command, sent to the mobile phone, and the APP displays the current temperature.
      */
     //% weight=66 blockId=convertTemperature block="Convert temperature %data"
+    //% subcategory=Bluetooth  
     export function convertTemperature(data: number): string {
         let cmdStr: string = "CMD|04|";
         cmdStr += data.toString();
@@ -986,6 +965,7 @@
      * Convert the light value to the standard command and send it to the mobile phone. The APP displays the current light level (0~255).
      */
     //% weight=64 blockId=convertLight block="Convert light %data"
+    //% subcategory=Bluetooth  
     export function convertLight(data: number): string {
         let cmdStr: string = "CMD|06|";
         cmdStr += data.toString();
@@ -997,6 +977,7 @@
      * Convert the battery value to the standard command and send it to the mobile phone. The APP displays the current voltage.
      */
     //% weight=62 blockId=convertBattery block="Convert battery %data"
+    //% subcategory=Bluetooth  
     export function convertBattery(data: number): string {
         let cmdStr: string = "CMD|07|";
         cmdStr += data.toString();
