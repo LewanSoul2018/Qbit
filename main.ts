@@ -686,7 +686,7 @@
         let val_byte = i2cread(APDS9960_CDATAL);
         let val = val_byte;
         val_byte = i2cread(APDS9960_CDATAH);
-        val = val + val_byte << 8;
+        val = val + (val_byte << 8);
         return val;
     }
      
