@@ -73,5 +73,9 @@
 	"qbit.convertBattery|block":"转换电量命令 %data",
 	"qbit.getBatVoltage|block":"获取qbit当前电压值(mV)",
 	"qbit.UltrasonicSend|block":"发送超声波测试距离到控制板中",
-	"qbit.setBLAngle|block":"设置Qbit中心平衡角度"
+	"qbit.setBLAngle|block":"设置Qbit中心平衡角度",
+	"qbit.qdee_get_color|block":"颜色 %color 值(0~255)",
+	"qbit.qbit_RGBValue.Red|block":"红色",
+	"qbit.qbit_RGBValue.Green|block":"绿色",
+	"qbit.qbit_RGBValue.Blue|block":"蓝色"
 }
