@@ -515,9 +515,9 @@
     const AMBIENT_LIGHT = 1;
     const ALL = 7;
 
-    const red_wb = 2500;
-    const green_wb = 3900;
-    const blue_wb = 5820;
+    const red_wb = 1120;
+    const green_wb = 2280;
+    const blue_wb = 3260;
 
     function i2cwrite(reg: number, value: number) {
         let buf = pins.createBuffer(2);
@@ -703,7 +703,11 @@
 	 *  Color sensor return the color.
 	 */
     //% weight=84 blockId=checkCurrentColor block="Current color %color"
-    export function checkCurrentColor(color: Colors): boolean {
+     export function checkCurrentColor(color: Colors): boolean {
+        setBrightness(150);     
+        setPixelRGB(Lights.Light1, QbitRGBColors.White);
+        setPixelRGB(Lights.Light2, QbitRGBColors.White);
+        showLight(); 
         let c = i2cread(APDS9960_CDATAL) + i2cread(APDS9960_CDATAH) * 256;
         let r = i2cread(APDS9960_RDATAL) + i2cread(APDS9960_RDATAH) * 256;
         let g = i2cread(APDS9960_GDATAL) + i2cread(APDS9960_GDATAH) * 256;
