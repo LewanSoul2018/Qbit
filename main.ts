@@ -680,7 +680,25 @@
         val &= 0b11101111;
         val |= enable;
         i2cwrite(APDS9960_ENABLE, val);
+     }
+
+     function readAmbientLight(): number {
+        let val_byte = i2cread(APDS9960_CDATAL);
+        let val = val_byte;
+        val_byte = i2cread(APDS9960_CDATAH);
+        val = val + val_byte << 8;
+        return val;
     }
+     
+        /**
+	 *  Color sensor light level, range from 0 ~ 255
+	 */
+	//% weight=85 blockId=getSensorLightLevel block="Get color sensor light level"
+    export function getSensorLightLevel(): number {
+        let lightLevel: number = readAmbientLight();
+        return lightLevel;
+    }
+
     /**
 	 *  Color sensor return the color.
 	 */
@@ -767,7 +785,7 @@
     /**
 	 * Extension pin set
 	 */
-    //% weight=82 blockId=setExtsIO block="Set extension pin|%ext|%iostatus"
+    //% weight=81 blockId=setExtsIO block="Set extension pin|%ext|%iostatus"
      export function setExtsIO(ext: Exts, iostatus: pinIOStatus)
      {
          if (ext == Exts.Ext1)
