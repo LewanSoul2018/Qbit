@@ -726,16 +726,16 @@
 
         let hsv = rgb2hue(r, g, b)
         let t = Colors.None;
-        if (c > 2200 && r > 65 && g > 65 && b > 65) {
+        if (c > 5200 && r > 85 && g > 85 && b > 85) {
             t = Colors.White;
         }
-        else if (c > 800) {
+        else if (c > 1600) {
             if (hsv < 8 || hsv > 350)
                 t = Colors.Red;
             else if (hsv > 60 && hsv < 170) {
                 t = Colors.Green;
             }
-            else if (hsv > 210 && hsv < 230) {
+            else if (hsv > 200 && hsv < 230) {
                 t = Colors.Blue;
             }
         }
